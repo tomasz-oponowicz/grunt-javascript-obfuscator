@@ -24,25 +24,21 @@ var grunt = require('grunt');
 
 exports.javascript_obfuscator = {
   setUp: function(done) {
-    // setup here if necessary
     done();
   },
   default_options: function(test) {
-    test.expect(1);
+    test.expect(4);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var obfuscated = grunt.file.read('tmp/default_options');
 
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
+    // should NOT be obfuscated
+    test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+    test.ok(obfuscated.indexOf('TEST_LOCAL_VARIABLE') > -1, '`TEST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    // should be obfuscated
+    test.ok(obfuscated.indexOf('.log') > -1, '`.log` shouldn\'t be obfuscated');
+    test.ok(obfuscated.indexOf('TEST_STRING_LITERAL') === -1, '`TEST_STRING_LITERAL` should be obfuscated');
 
     test.done();
-  },
+  }
 };
