@@ -1,5 +1,7 @@
 # grunt-javascript-obfuscator
 
+[![Build Status](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator.svg?branch=master)](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator)
+
 > Obfuscates JavaScript files.
 
 ## Getting Started
