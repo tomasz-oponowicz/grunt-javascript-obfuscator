@@ -1,44 +1,63 @@
 'use strict';
 
+var helper = require('./helper');
 var grunt = require('grunt');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
-
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
-
 exports.javascript_obfuscator = {
-  setUp: function(done) {
-    done();
-  },
-  default_options: function(test) {
-    test.expect(4);
+    setUp: function(done) {
+        done();
+    },
 
-    var obfuscated = grunt.file.read('tmp/default_options');
+    unknown_file: function(test) {
+        test.expect(2);
 
-    // should NOT be obfuscated
-    test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
-    test.ok(obfuscated.indexOf('TEST_LOCAL_VARIABLE') > -1, '`TEST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+        helper.callGruntfile('fixtures/gruntfile_unknown_file.js', function (error, stdout, stderr) {
+            test.ok(error, "Command should fail.");
+            test.ok(stdout.indexOf("Source files not found.") > -1, "Standard error stream should be contain error message.");
 
-    // should be obfuscated
-    test.ok(obfuscated.indexOf('.log') > -1, '`.log` shouldn\'t be obfuscated');
-    test.ok(obfuscated.indexOf('TEST_STRING_LITERAL') === -1, '`TEST_STRING_LITERAL` should be obfuscated');
+            test.done();
+        });
+    },
 
-    test.done();
-  }
+    single_file: function(test) {
+        test.expect(5);
+
+        helper.callGruntfile('fixtures/gruntfile_single_file.js', function (error, stdout, stderr) {
+            test.equal(error, null, "Command should not fail.");
+            test.equal(stderr, '', "Standard error stream should be empty.");
+
+            var obfuscated = grunt.file.read('tmp/single_file');
+
+            // should NOT be obfuscated
+            test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('FIRST_LOCAL_VARIABLE') > -1, '`FIRST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+
+            // should be obfuscated
+            test.ok(obfuscated.indexOf('FIRST_STRING_LITERAL') === -1, '`FIRST_STRING_LITERAL` should be obfuscated');
+
+            test.done();
+        });
+    },
+
+    multiple_files: function(test) {
+        test.expect(7);
+
+        helper.callGruntfile('fixtures/gruntfile_multiple_files.js', function (error, stdout, stderr) {
+            test.equal(error, null, "Command should not fail.");
+            test.equal(stderr, '', "Standard error stream should be empty.");
+
+            var obfuscated = grunt.file.read('tmp/multiple_files');
+
+            // should NOT be obfuscated
+            test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('FIRST_LOCAL_VARIABLE') > -1, '`FIRST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('SECOND_LOCAL_VARIABLE') > -1, '`SECOND_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+
+            // should be obfuscated
+            test.ok(obfuscated.indexOf('FIRST_STRING_LITERAL') === -1, '`FIRST_STRING_LITERAL` should be obfuscated');
+            test.ok(obfuscated.indexOf('SECOND_STRING_LITERAL') === -1, '`SECOND_STRING_LITERAL` should be obfuscated');
+
+            test.done();
+        });
+    }
 };
