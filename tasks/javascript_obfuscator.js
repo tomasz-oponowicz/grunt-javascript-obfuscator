@@ -11,8 +11,6 @@
 var JavaScriptObfuscator = require('javascript-obfuscator');
 
 function concat(grunt, paths) {
-  console.log("paths", paths);
-
   if (paths.length === 0) {
     throw new Error('Source files not found.');
   }

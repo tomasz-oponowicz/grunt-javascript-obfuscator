@@ -59,5 +59,27 @@ exports.javascript_obfuscator = {
 
             test.done();
         });
+    },
+
+    overwrite: function(test) {
+        test.expect(5);
+
+        grunt.file.copy('test/fixtures/first_sample.js', 'tmp/overwrite.js');
+
+        helper.callGruntfile('fixtures/gruntfile_overwrite.js', function (error, stdout, stderr) {
+            test.equal(error, null, "Command should not fail.");
+            test.equal(stderr, '', "Standard error stream should be empty.");
+
+            var obfuscated = grunt.file.read('tmp/overwrite.js');
+
+            // should NOT be obfuscated
+            test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('FIRST_LOCAL_VARIABLE') > -1, '`FIRST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+
+            // should be obfuscated
+            test.ok(obfuscated.indexOf('FIRST_STRING_LITERAL') === -1, '`FIRST_STRING_LITERAL` should be obfuscated');
+
+            test.done();
+        });
     }
 };
