@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator.svg?branch=master)](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator)
 
+> _Note:_ Work in progress. More information coming soon.
+
 > Obfuscates JavaScript files.
 
 ## Getting Started
