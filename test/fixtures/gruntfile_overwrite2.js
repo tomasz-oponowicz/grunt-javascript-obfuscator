@@ -1,8 +1,8 @@
 module.exports = require('./gruntfile_generic').setup({
     options: {},
-    single_file: {
+    overwrite: {
         files: {
-            '../../tmp/single_file.js': 'first_sample.js'
+            '../../tmp/overwrite2.js': '../../tmp/overwrite2.js'
         }
     }
 });
