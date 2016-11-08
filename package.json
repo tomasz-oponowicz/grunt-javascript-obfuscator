@@ -1,7 +1,9 @@
 {
   "name": "grunt-javascript-obfuscator",
   "description": "Obfuscates JavaScript files.",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "main": "tasks/javascript_obfuscator.js",
+  "files": ["tasks"],
   "homepage": "https://github.com/tomasz-oponowicz/grunt-javascript-obfuscator",
   "author": {
     "name": "Tomasz Oponowicz",
@@ -14,14 +16,9 @@
   "bugs": {
     "url": "https://github.com/tomasz-oponowicz/grunt-javascript-obfuscator/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/tomasz-oponowicz/grunt-javascript-obfuscator/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">=4.5.0"
   },
   "scripts": {
     "test": "grunt"
@@ -31,9 +28,18 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-jshint": "^0.9.2",
-    "grunt-contrib-nodeunit": "^0.3.3"
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "javascript-obfuscator": "0.7.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5",
+    "javascript-obfuscator": ">=0.7.2"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "javascript-obfuscator",
+    "obfuscate",
+    "obfuscator"
+
   ]
 }

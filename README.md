@@ -2,18 +2,18 @@
 
 [![Build Status](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator.svg?branch=master)](https://travis-ci.org/tomasz-oponowicz/grunt-javascript-obfuscator)
 
-> _Note:_ Work in progress. More information coming soon.
-
-> Obfuscates JavaScript files.
+> Obfuscates JavaScript files using amazing [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator).
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin and _javascript-obfuscator_ with this command:
 
 ```shell
-npm install grunt-javascript-obfuscator --save-dev
+npm install grunt-javascript-obfuscator javascript-obfuscator --save-dev
 ```
+
+..._javascript-obfuscator_ is defined as a peer dependency. In other words you can experiment with every version above `0.7.2`. 
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
@@ -41,46 +41,40 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+Options are passed directly to _javascript-obfuscator_. Please visit [documentation of the project](https://github.com/javascript-obfuscator/javascript-obfuscator) for a complete list of options.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+
+In this example, the default options are used to obfuscate scripts:
 
 ```js
 grunt.initConfig({
   javascript_obfuscator: {
-    options: {},
+    options: {
+      /* Default options */
+    },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
     },
   },
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+
+In this example, custom options are used to obfuscate scripts. `debugProtection` makes it almost impossible to use the console tab of the Developer Tools:
 
 ```js
 grunt.initConfig({
   javascript_obfuscator: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      debugProtection: true,
+      debugProtectionInterval: true
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
     },
   },
 });
@@ -90,4 +84,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+ * 2016-11-08   v1.0.0   First release.
