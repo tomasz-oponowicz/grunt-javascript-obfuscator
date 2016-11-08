@@ -13,6 +13,8 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-javascript-obfuscator javascript-obfuscator --save-dev
 ```
 
+..._javascript-obfuscator_ is defined as a peer dependency. In other words you can experiment with every version above `0.7.2`. 
+
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
