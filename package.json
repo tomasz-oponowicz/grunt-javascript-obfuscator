@@ -1,6 +1,6 @@
 {
   "name": "grunt-javascript-obfuscator",
-  "description": "Obfuscates JavaScript files.",
+  "description": "Obfuscates JavaScript files using amazing javascript-obfuscator.",
   "version": "1.0.0",
   "main": "tasks/javascript_obfuscator.js",
   "files": ["tasks"],
