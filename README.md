@@ -4,6 +4,10 @@
 
 > Obfuscates JavaScript files using amazing [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator).
 
+Conceal your logic and hide any data contained in the code. Please read documentation [how to protect your code effectively](https://github.com/javascript-obfuscator/javascript-obfuscator/blob/master/README.md).
+
+Special thanks for [@sanex3339](https://github.com/sanex3339) for his outstanding [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator) library.
+
 ## Getting Started
 This plugin requires Grunt `>=0.4.5`
 
