@@ -1,3 +1,5 @@
+'use strict';
+
 var cp = require("child_process");
 
 exports.callGruntfile = function (filename, whenDoneCallback) {
