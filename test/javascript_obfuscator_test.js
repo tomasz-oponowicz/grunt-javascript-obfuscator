@@ -4,10 +4,6 @@ var helper = require('./helper');
 var grunt = require('grunt');
 
 exports.javascript_obfuscator = {
-    setUp: function(done) {
-        done();
-    },
-
     unknown_file: function(test) {
         test.expect(2);
 
