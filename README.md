@@ -55,9 +55,11 @@ grunt.initConfig({
     options: {
       /* Default options */
     },
-    files: {
-      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
-    },
+    main: {
+      files: {
+        'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
+      }
+    }
   },
 });
 ```
@@ -73,9 +75,11 @@ grunt.initConfig({
       debugProtection: true,
       debugProtectionInterval: true
     },
-    files: {
-      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
-    },
+    main: {
+      files: {
+        'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
+      }
+    }
   },
 });
 ```
