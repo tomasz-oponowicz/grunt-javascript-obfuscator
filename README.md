@@ -55,9 +55,11 @@ grunt.initConfig({
     options: {
       /* Default options */
     },
-    files: {
-      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
-    },
+    main: {
+      files: {
+        'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
+      }
+    }
   },
 });
 ```
@@ -73,9 +75,11 @@ grunt.initConfig({
       debugProtection: true,
       debugProtectionInterval: true
     },
-    files: {
-      'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
-    },
+    main: {
+      files: {
+        'dist/obfuscated.js': ['src/module1.js', 'src/module2.js']
+      }
+    }
   },
 });
 ```
@@ -85,5 +89,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2016-11-09 / v1.0.2 / Fixed examples.
  * 2016-11-09 / v1.0.1 / Relaxed peer dependencies.
  * 2016-11-08 / v1.0.0 / First release.
