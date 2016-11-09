@@ -38,8 +38,11 @@
   "keywords": [
     "gruntplugin",
     "javascript-obfuscator",
+    "obfuscator",
     "obfuscate",
-    "obfuscator"
-
+    "protect",
+    "conceal",
+    "scramble",
+    "safe"
   ]
 }
