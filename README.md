@@ -85,4 +85,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2016-11-09 / v1.0.1 / Relaxed peer dependencies.
  * 2016-11-08 / v1.0.0 / First release.
