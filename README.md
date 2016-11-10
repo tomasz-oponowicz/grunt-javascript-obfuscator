@@ -4,7 +4,7 @@
 
 > Obfuscates JavaScript files using amazing [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator).
 
-Conceal your logic and hide any data contained in the code. Please read documentation [how to protect your code effectively](https://github.com/javascript-obfuscator/javascript-obfuscator/blob/master/README.md). Sample protection:
+Conceal your logic and hide any data contained in the code. Please read documentation [how to protect your code effectively](https://github.com/javascript-obfuscator/javascript-obfuscator/blob/master/README.md). Basic protection:
 
 Original code:
 
@@ -12,8 +12,6 @@ Original code:
         var variable = 'abc';
         console.log(variable);
     })();
-
-
 
 Protected code:
 
