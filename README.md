@@ -8,21 +8,25 @@ Conceal your logic and hide any data contained in the code. Please read document
 
 Original code:
 
-    (function(){
-        var variable = 'abc';
-        console.log(variable);
-    })();
+```js
+(function(){
+    var variable = 'abc';
+    console.log(variable);
+})();
+```
 
 Protected code:
 
-    var _0xabf1 = [
-        '\x61\x62\x63',
-        '\x6c\x6f\x67'
-    ];
-    (function() {
-        var _0xe6fab6 = _0xabf1[0x0];
-        console[_0xabf1[0x1]](_0xe6fab6);
-    }());
+```js
+var _0xabf1 = [
+    '\x61\x62\x63',
+    '\x6c\x6f\x67'
+];
+(function() {
+    var _0xe6fab6 = _0xabf1[0x0];
+    console[_0xabf1[0x1]](_0xe6fab6);
+}());
+```
 
 
 
