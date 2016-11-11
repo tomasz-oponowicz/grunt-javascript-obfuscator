@@ -113,6 +113,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2016-11-11 / v1.0.4 / Updated README.
  * 2016-11-09 / v1.0.3 / Updated README.
  * 2016-11-09 / v1.0.2 / Fixed examples.
  * 2016-11-09 / v1.0.1 / Relaxed peer dependencies.
