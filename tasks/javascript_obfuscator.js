@@ -16,10 +16,33 @@ function concat(grunt, paths) {
   }
 
   return paths.map(function(path) {
-
-    // Read file source.
     return grunt.file.read(path);
   }).join(grunt.util.normalizelf(';'));
+}
+
+function obfuscate(grunt, originalSource, destFile, options) {
+  var obfuscatedSource = JavaScriptObfuscator.obfuscate(originalSource, options).getObfuscatedCode();
+  grunt.file.write(destFile, obfuscatedSource);
+  grunt.log.writeln('File "' + destFile + '" obfuscated.');
+}
+
+function obfuscateSingleTarget(grunt, srcFiles, destFile, options) {
+  var source;
+
+  try {
+    source = concat(grunt, srcFiles);
+  } catch (error) {
+    return grunt.fail.warn(error);
+  }
+
+  obfuscate(grunt, source, destFile, options);
+}
+
+function obfuscateMultiplesTargets(grunt, destFiles, options) {
+  destFiles.forEach(function (destFile) {
+    var source = grunt.file.read(destFile);
+    obfuscate(grunt, source, destFile, options);
+  });
 }
 
 module.exports = function(grunt) {
@@ -33,22 +56,12 @@ module.exports = function(grunt) {
       throw new Error('Target files not found.');
     }
 
-    files.forEach(function(f) {
-      var src;
-
-      try {
-        src = concat(grunt, f.src);
-      } catch (e) {
-        return grunt.fail.warn(e);
+    files.forEach(function(file) {
+      if (file.dest) {
+        obfuscateSingleTarget(grunt, file.src, file.dest, options);
+      } else {
+        obfuscateMultiplesTargets(grunt, file.src, options);
       }
-
-      src = JavaScriptObfuscator.obfuscate(src, options).getObfuscatedCode();
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
 };
