@@ -112,6 +112,23 @@ grunt.initConfig({
 });
 ```
 
+#### Obfuscate and overwrite
+
+In this example, source files are obfuscated and overwritten:
+
+```js
+grunt.initConfig({
+  javascript_obfuscator: {
+    options: {
+      /* Default options */
+    },
+    main: {
+      src: ['src/module1.js', 'src/module2.js']
+    }
+  },
+});
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
