@@ -8,23 +8,25 @@ Conceal your logic and hide any data contained in the code. Please read document
 
 Original code:
 
-    (function(){
-        var variable = 'abc';
-        console.log(variable);
-    })();
+```js
+(function(){
+    var variable = 'abc';
+    console.log(variable);
+})();
+```
 
 Protected code:
 
-    var _0xabf1 = [
-        '\x61\x62\x63',
-        '\x6c\x6f\x67'
-    ];
-    (function() {
-        var _0xe6fab6 = _0xabf1[0x0];
-        console[_0xabf1[0x1]](_0xe6fab6);
-    }());
-
-
+```js
+var _0xabf1 = [
+    '\x61\x62\x63',
+    '\x6c\x6f\x67'
+];
+(function() {
+    var _0xe6fab6 = _0xabf1[0x0];
+    console[_0xabf1[0x1]](_0xe6fab6);
+}());
+```
 
 Special thanks for [@sanex3339](https://github.com/sanex3339) for his outstanding [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator) library.
 
@@ -108,11 +110,29 @@ grunt.initConfig({
 });
 ```
 
+#### Obfuscate and overwrite
+
+In this example, source files are obfuscated and overwritten:
+
+```js
+grunt.initConfig({
+  javascript_obfuscator: {
+    options: {
+      /* Default options */
+    },
+    main: {
+      src: ['src/module1.js', 'src/module2.js']
+    }
+  },
+});
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
 
+ * 2016-12-23 / v1.1.0 / Obfuscate and overwrite files without destination.
  * 2016-11-11 / v1.0.4 / Updated README.
  * 2016-11-09 / v1.0.3 / Updated README.
  * 2016-11-09 / v1.0.2 / Fixed examples.

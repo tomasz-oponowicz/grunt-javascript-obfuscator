@@ -133,5 +133,39 @@ exports.javascript_obfuscator = {
 
             test.done();
         });
+    },
+
+    overwrite_without_dest: function(test) {
+        test.expect(8);
+
+        grunt.file.copy('test/fixtures/first_sample.js', 'tmp/overwrite_without_dest_first.js');
+        grunt.file.copy('test/fixtures/second_sample.js', 'tmp/overwrite_without_dest_second.js');
+
+        helper.callGruntfile('fixtures/gruntfile_overwrite_without_dest.js', function (error, stdout, stderr) {
+            test.equal(error, null, "Command should not fail.");
+            test.equal(stderr, '', "Standard error stream should be empty.");
+
+            var obfuscated;
+
+            obfuscated = grunt.file.read('tmp/overwrite_without_dest_first.js');
+
+            // should NOT be obfuscated
+            test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('FIRST_LOCAL_VARIABLE') > -1, '`FIRST_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+
+            // should be obfuscated
+            test.ok(obfuscated.indexOf('FIRST_STRING_LITERAL') === -1, '`FIRST_STRING_LITERAL` should be obfuscated');
+
+            obfuscated = grunt.file.read('tmp/overwrite_without_dest_second.js');
+
+            // should NOT be obfuscated
+            test.ok(obfuscated.indexOf('console') > -1, '`console` shouldn\'t be obfuscated');
+            test.ok(obfuscated.indexOf('SECOND_LOCAL_VARIABLE') > -1, '`SECOND_LOCAL_VARIABLE` shouldn\'t be obfuscated');
+
+            // should be obfuscated
+            test.ok(obfuscated.indexOf('SECOND_STRING_LITERAL') === -1, '`SECOND_STRING_LITERAL` should be obfuscated');
+
+            test.done();
+        });
     }
 };
