@@ -28,8 +28,6 @@ var _0xabf1 = [
 }());
 ```
 
-
-
 Special thanks for [@sanex3339](https://github.com/sanex3339) for his outstanding [javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator) library.
 
 ## Getting Started
@@ -134,6 +132,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2016-11-11 / v1.1.0 / Obfuscate and overwrite files without destination.
  * 2016-11-11 / v1.0.4 / Updated README.
  * 2016-11-09 / v1.0.3 / Updated README.
  * 2016-11-09 / v1.0.2 / Fixed examples.
