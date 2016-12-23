@@ -132,7 +132,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
- * 2016-11-11 / v1.1.0 / Obfuscate and overwrite files without destination.
+ * 2016-12-23 / v1.1.0 / Obfuscate and overwrite files without destination.
  * 2016-11-11 / v1.0.4 / Updated README.
  * 2016-11-09 / v1.0.3 / Updated README.
  * 2016-11-09 / v1.0.2 / Fixed examples.
