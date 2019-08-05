@@ -38,6 +38,10 @@ function sourceMap(grunt, obfuscated, destFile, options) {
     );
   }
 
+  var obfuscatedSource = obfuscated.getObfuscatedCode();
+  obfuscatedSource += '\n//# sourceMappingURL=' + sourceMapFileName;
+  grunt.file.write(destFile, obfuscatedSource);
+
   grunt.file.write(sourceMapFileName, sourceMap);
   grunt.log.writeln('File "' + sourceMapFileName + '" saved as source map.');
 }
