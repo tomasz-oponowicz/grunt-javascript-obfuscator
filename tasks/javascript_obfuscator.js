@@ -21,15 +21,6 @@ function concat(grunt, paths) {
   }).join(grunt.util.normalizelf(';'));
 }
 
-function obfuscate(grunt, originalSource, destFile, options) {
-  var obfuscated = JavaScriptObfuscator.obfuscate(originalSource, options);
-  var obfuscatedSource = obfuscated.getObfuscatedCode();
-  grunt.file.write(destFile, obfuscatedSource);
-  grunt.log.writeln('File "' + destFile + '" obfuscated.');
-
-  sourceMap(grunt, obfuscated, destFile, options);
-}
-
 function sourceMap(grunt, obfuscated, destFile, options) {
   if (!options.sourceMap || options.sourceMapMode !== 'separate') {
     return false;
@@ -49,6 +40,15 @@ function sourceMap(grunt, obfuscated, destFile, options) {
 
   grunt.file.write(sourceMapFileName, sourceMap);
   grunt.log.writeln('File "' + sourceMapFileName + '" saved as source map.');
+}
+
+function obfuscate(grunt, originalSource, destFile, options) {
+  var obfuscated = JavaScriptObfuscator.obfuscate(originalSource, options);
+  var obfuscatedSource = obfuscated.getObfuscatedCode();
+  grunt.file.write(destFile, obfuscatedSource);
+  grunt.log.writeln('File "' + destFile + '" obfuscated.');
+
+  sourceMap(grunt, obfuscated, destFile, options);
 }
 
 function obfuscateSingleTarget(grunt, srcFiles, destFile, options) {
