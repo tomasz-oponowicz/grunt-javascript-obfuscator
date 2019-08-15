@@ -3,7 +3,9 @@
   "description": "Obfuscates JavaScript files using amazing javascript-obfuscator.",
   "version": "1.1.0",
   "main": "tasks/javascript_obfuscator.js",
-  "files": ["tasks"],
+  "files": [
+    "tasks"
+  ],
   "homepage": "https://github.com/tomasz-oponowicz/grunt-javascript-obfuscator",
   "author": {
     "name": "Tomasz Oponowicz",
@@ -28,7 +30,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-nodeunit": "^2.0.0",
     "javascript-obfuscator": "0.7.2"
   },
   "peerDependencies": {
